@@ -1,0 +1,27 @@
+name: deploy
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - name: get site
+        run: |
+          mkdir -p site/cars && cd site
+          for f in index.html catalog.js catalog.json; do curl -fsSL -o $f https://whimsical-biscotti-0c06a9.netlify.app/$f; done
+          for f in acura-zdx-2024-1.jpg acura-zdx-2024-2.jpg acura-zdx-2024-3.jpg acura-zdx-2024-4.jpg infiniti-qx50-2019-1.jpg infiniti-qx50-2019-10.jpg infiniti-qx50-2019-11.jpg infiniti-qx50-2019-12.jpg infiniti-qx50-2019-2.jpg infiniti-qx50-2019-3.jpg infiniti-qx50-2019-4.jpg infiniti-qx50-2019-5.jpg infiniti-qx50-2019-6.jpg infiniti-qx50-2019-7.jpg infiniti-qx50-2019-8.jpg infiniti-qx50-2019-9.jpg jaguar-xf-2017-1.jpg jaguar-xf-2017-2.jpg jaguar-xf-2017-3.jpg jaguar-xf-2017-4.jpg jeep-wagoneer-s-2025-1.jpg jeep-wagoneer-s-2025-10.jpg jeep-wagoneer-s-2025-11.jpg jeep-wagoneer-s-2025-12.jpg jeep-wagoneer-s-2025-13.jpg jeep-wagoneer-s-2025-14.jpg jeep-wagoneer-s-2025-15.jpg jeep-wagoneer-s-2025-16.jpg jeep-wagoneer-s-2025-17.jpg jeep-wagoneer-s-2025-2.jpg jeep-wagoneer-s-2025-3.jpg jeep-wagoneer-s-2025-4.jpg jeep-wagoneer-s-2025-5.jpg jeep-wagoneer-s-2025-6.jpg jeep-wagoneer-s-2025-7.jpg jeep-wagoneer-s-2025-8.jpg jeep-wagoneer-s-2025-9.jpg lexus-ls500-2022-1.jpg lexus-ls500-2022-10.jpg lexus-ls500-2022-2.jpg lexus-ls500-2022-3.jpg lexus-ls500-2022-4.jpg lexus-ls500-2022-5.jpg lexus-ls500-2022-6.jpg lexus-ls500-2022-7.jpg lexus-ls500-2022-8.jpg lexus-ls500-2022-9.jpg lexus-rc350-1.jpg lexus-rc350-2.jpg lexus-rc350-3.jpg lexus-rc350-4.jpg lexus-rc350-5.jpg lexus-rc350-6.jpg lexus-rc350-7.jpg lexus-rc350-8.jpg range-rover-sport-1.jpg range-rover-sport-10.jpg range-rover-sport-11.jpg range-rover-sport-12.jpg range-rover-sport-2.jpg range-rover-sport-3.jpg range-rover-sport-4.jpg range-rover-sport-5.jpg range-rover-sport-6.jpg range-rover-sport-7.jpg range-rover-sport-8.jpg range-rover-sport-9.jpg tesla-model3-2021-1.jpg tesla-model3-2021-2.jpg tesla-model3-2021-3.jpg tesla-model3-2021-4.jpg tesla-model3-2021-5.jpg tesla-model3-2021-6.jpg tesla-model3-2021-7.jpg tesla-model3-2021-8.jpg; do curl -fsSL -o cars/$f https://whimsical-biscotti-0c06a9.netlify.app/cars/$f; done
+          echo metalhorse.com.ua > CNAME
+          touch .nojekyll
+          ls -la . cars | head
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4
