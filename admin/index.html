@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Замовлення — Metal Horse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{--ink:#060709;--steel:#111419;--steel-2:#181c22;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--fg:#f3f5f7;--muted:#8b95a2;--or:#ff6a13;--or-dim:rgba(255,106,19,.14);--ok:#3ecf8e;--warn:#f5b545;--bad:#ff5d5d;--blue:#5aa9ff;--f-d:"Unbounded",system-ui,sans-serif;--f-b:"Onest",system-ui,sans-serif;--f-m:"JetBrains Mono",ui-monospace,monospace;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0;background:var(--ink);color:var(--fg);font-family:var(--f-b);font-size:15px;line-height:1.5}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit}
+.top{position:sticky;top:0;z-index:5;background:rgba(6,7,9,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.logo{font-family:var(--f-d);font-weight:800;letter-spacing:.04em;font-size:17px}.logo span{color:var(--or)}
+.logo small{display:block;font-family:var(--f-b);font-weight:500;letter-spacing:0;color:var(--muted);font-size:12px}
+.sp{flex:1}
+.btn{border:0;border-radius:10px;padding:10px 16px;background:var(--or);color:#111;font-weight:700;cursor:pointer}
+.btn.gh{background:transparent;color:var(--fg);border:1px solid var(--line-2)}
+.btn:disabled{opacity:.5;cursor:default}
+.wrap{max-width:1180px;margin:0 auto;padding:20px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px}
+.st{background:var(--steel);border:1px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;text-align:left}
+.st b{display:block;font-family:var(--f-d);font-size:24px}.st span{color:var(--muted);font-size:13px}
+.st.on{border-color:var(--or);background:var(--or-dim)}
+.tools{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.tools input{flex:1;min-width:220px;background:var(--steel);border:1px solid var(--line-2);border-radius:10px;padding:10px 14px}
+.list{display:grid;gap:12px}
+.card{background:var(--steel);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:grid;grid-template-columns:1fr 1.3fr auto;gap:18px}
+.card.new{border-color:rgba(255,106,19,.55);box-shadow:0 0 0 1px rgba(255,106,19,.25) inset}
+.num{font-family:var(--f-m);font-weight:600;color:var(--or)}
+.date{color:var(--muted);font-size:13px}
+.nm{font-weight:700;font-size:17px;margin:4px 0 2px}
+.tel{font-family:var(--f-m);font-size:15px;text-decoration:none}
+.msg{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.msg a{font-size:12px;font-weight:600;text-decoration:none;padding:5px 10px;border-radius:8px;background:var(--steel-2);border:1px solid var(--line-2)}
+.msg a.v{background:#7360f2;border-color:#7360f2}.msg a.t{background:#229ed9;border-color:#229ed9}.msg a.w{background:#25d366;border-color:#25d366;color:#062}
+.pref{font-size:12px;color:var(--muted);margin-top:6px}.pref b{color:var(--fg)}
+.items{white-space:pre-wrap;font-size:14px}
+.meta{display:grid;gap:3px;margin-top:10px;font-size:13px;color:var(--muted)}.meta b{color:var(--fg);font-weight:600}
+.tot{font-family:var(--f-d);font-size:18px;margin-top:8px}
+.side{display:flex;flex-direction:column;gap:8px;min-width:190px}
+select{background:var(--steel-2);border:1px solid var(--line-2);border-radius:10px;padding:9px 10px}
+textarea{background:var(--steel-2);border:1px solid var(--line-2);border-radius:10px;padding:8px 10px;resize:vertical;min-height:60px;font-size:13px}
+.badge{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+.b-Нове{background:var(--or);color:#111}.b-В_роботі{background:var(--blue);color:#061428}.b-Відправлено{background:var(--warn);color:#2a1a00}.b-Виконано{background:var(--ok);color:#03251a}.b-Скасовано{background:#3a3f47;color:#cfd6df}
+.empty{color:var(--muted);text-align:center;padding:50px 0}
+.login{max-width:380px;margin:12vh auto;padding:28px;background:var(--steel);border:1px solid var(--line);border-radius:18px}
+.login h1{font-family:var(--f-d);font-size:22px;margin:0 0 6px}.login p{color:var(--muted);margin:0 0 18px}
+.login input{width:100%;background:var(--steel-2);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.login .btn{width:100%}.err{color:var(--bad);min-height:22px;font-size:14px}
+.saved{font-size:12px;color:var(--ok);min-height:16px}
+.upd{font-size:12px;color:var(--muted)}
+@media(max-width:860px){.card{grid-template-columns:1fr}.side{min-width:0}.stats{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:480px){.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const API="https://script.google.com/macros/s/AKfycbw7Xzy_71TPw8t9UELgWtQ00haffn84r9Mcl0hhcNbpGeVugpJKsOMcRd06UMUFEeRrUw/exec";
+const ST=["Нове","В роботі","Відправлено","Виконано","Скасовано"];
+let KEY="",ORD=[],F="Активні",Q="",SEEN=new Set(),timer=null;
+try{KEY=localStorage.getItem("mh-admin-key")||"";SEEN=new Set(JSON.parse(localStorage.getItem("mh-admin-seen")||"[]"))}catch(e){}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const digits=t=>{let d=String(t).replace(/\D/g,"");if(d.length===10&&d[0]==="0")d="38"+d;return d};
+function api(params){const u=new URL(API);u.searchParams.set("key",KEY);for(const k in params)u.searchParams.set(k,params[k]);return fetch(u).then(r=>r.json())}
+function login(err){$("#app").innerHTML=`<form class="login" id="lf"><div class="logo">METAL <span>HORSE</span></div><h1 style="margin-top:18px">Замовлення</h1><p>Вхід для менеджерів</p><input id="pw" type="password" placeholder="Пароль" autocomplete="current-password" autofocus><div class="err">${err||""}</div><button class="btn">Увійти</button></form>`;
+  $("#lf").onsubmit=e=>{e.preventDefault();KEY=$("#pw").value.trim();load(true)}}
+function fmtDate(s){const d=new Date(s);if(isNaN(d))return esc(s);return d.toLocaleString("uk-UA",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"})}
+function shell(){$("#app").innerHTML=`<div class="top"><div class="bar"><div class="logo">METAL <span>HORSE</span><small>Замовлення з сайту</small></div><div class="sp"></div><span class="upd" id="upd"></span><button class="btn gh" id="rf">Оновити</button><a class="btn gh" id="sh" target="_blank" rel="noopener" style="text-decoration:none">Таблиця</a><button class="btn gh" id="lo">Вийти</button></div></div>
+<div class="wrap"><div class="stats" id="stats"></div><div class="tools"><input id="q" placeholder="Пошук: ім'я, телефон, номер, деталь…"></div><div class="list" id="list"></div></div>`;
+  $("#rf").onclick=()=>load();$("#lo").onclick=()=>{try{localStorage.removeItem("mh-admin-key")}catch(e){}KEY="";clearInterval(timer);login()};
+  $("#q").oninput=e=>{Q=e.target.value.toLowerCase();render()}}
+function render(){
+  const cnt={"Активні":0};ST.forEach(s=>cnt[s]=0);ORD.forEach(o=>{cnt[o.status]=(cnt[o.status]||0)+1;if(o.status!=="Виконано"&&o.status!=="Скасовано")cnt["Активні"]++});
+  const tabs=["Активні","Нове","В роботі","Відправлено","Виконано"];
+  $("#stats").innerHTML=tabs.map(t=>`<button class="st${F===t?" on":""}" data-f="${t}"><b>${cnt[t]||0}</b><span>${t}</span></button>`).join("");
+  document.querySelectorAll(".st").forEach(b=>b.onclick=()=>{F=F===b.dataset.f?"Усі":b.dataset.f;render()});
+  let L=ORD.filter(o=>F==="Усі"?true:F==="Активні"?(o.status!=="Виконано"&&o.status!=="Скасовано"):o.status===F);
+  if(Q)L=L.filter(o=>[o.num,o.name,o.tel,o.items,o.city,o.note,o.mnote].join(" ").toLowerCase().includes(Q));
+  $("#list").innerHTML=L.length?L.map(card).join(""):`<div class="empty">${ORD.length?"Нічого не знайдено":"Поки що замовлень немає"}</div>`;
+  L.forEach(o=>{const c=document.getElementById("o"+o.row);if(!c)return;
+    c.querySelector("select").onchange=e=>save(o,"status",e.target.value,c);
+    let t;c.querySelector("textarea").oninput=e=>{clearTimeout(t);t=setTimeout(()=>save(o,"note",e.target.value,c),700)}});
+  const seen=ORD.map(o=>String(o.num));SEEN=new Set(seen);try{localStorage.setItem("mh-admin-seen",JSON.stringify(seen.slice(0,500)))}catch(e){}
+}
+function card(o){const d=digits(o.tel);const m=o.msgr||"";
+  return `<div class="card${o.status==="Нове"?" new":""}" id="o${o.row}">
+  <div><div><span class="num">${esc(o.num)}</span> <span class="badge b-${esc(String(o.status).replace(/ /g,"_"))}">${esc(o.status)}</span></div><div class="date">${fmtDate(o.date)}</div>
+    <div class="nm">${esc(o.name)}</div><a class="tel" href="tel:+${d}">+${esc(d)}</a>
+    <div class="pref">Зручний зв'язок: <b>${esc(m)}</b></div>
+    <div class="msg"><a class="v" href="viber://chat?number=%2B${d}">Viber</a><a class="t" href="https://t.me/+${d}" target="_blank" rel="noopener">Telegram</a><a class="w" href="https://wa.me/${d}" target="_blank" rel="noopener">WhatsApp</a><a href="tel:+${d}">Дзвінок</a></div></div>
+  <div><div class="items">${esc(o.items)||"—"}</div>${o.total?`<div class="tot">${esc(o.total)}</div>`:""}
+    <div class="meta"><span>Доставка: <b>${esc(o.dlv)}</b>${o.city?` · ${esc(o.city)}`:""}${o.np?` · ${esc(o.np)}`:""}</span><span>Оплата: <b>${esc(o.pay)}</b></span>${o.note?`<span>Коментар клієнта: <b>${esc(o.note)}</b></span>`:""}</div></div>
+  <div class="side"><select>${ST.map(s=>`<option${s===o.status?" selected":""}>${s}</option>`).join("")}</select><textarea placeholder="Нотатка менеджера">${esc(o.mnote)}</textarea><div class="saved"></div></div></div>`}
+function save(o,action,value,c){const s=c.querySelector(".saved");s.textContent="Зберігаю…";s.style.color="var(--muted)";
+  api({action,row:o.row,num:o.num,value}).then(j=>{if(!j.ok)throw 0;if(action==="status"){o.status=value;render()}else o.mnote=value;const s2=document.querySelector("#o"+o.row+" .saved");if(s2){s2.style.color="";s2.textContent="Збережено ✓"}})
+  .catch(()=>{s.style.color="var(--bad)";s.textContent="Помилка, спробуйте ще раз"})}
+function load(first){const u=$("#upd");if(u)u.textContent="Оновлюю…";
+  return api({}).then(j=>{if(!j.ok){if(j.error==="auth"){try{localStorage.removeItem("mh-admin-key")}catch(e){}login(first?"Невірний пароль":"")}return}
+    try{localStorage.setItem("mh-admin-key",KEY)}catch(e){}
+    const fresh=j.orders.filter(o=>SEEN.size&&!SEEN.has(String(o.num)));
+    if(!$("#list")){shell();clearInterval(timer);timer=setInterval(()=>{if(!document.hidden)load()},60000)}
+    ORD=j.orders;if(j.sheet)$("#sh").href=j.sheet;render();
+    $("#upd").textContent="Оновлено о "+new Date().toLocaleTimeString("uk-UA",{hour:"2-digit",minute:"2-digit"});
+    if(fresh.length){document.title="("+fresh.length+") Нові замовлення";try{new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=").play()}catch(e){}}
+  }).catch(()=>{const u2=$("#upd");if(u2)u2.textContent="Немає зв'язку, спробую ще раз";else login("Немає зв'язку з сервером")})}
+addEventListener("focus",()=>{document.title="Замовлення — Metal Horse"});
+KEY?load():login();
+</script>
+</body>
+</html>
