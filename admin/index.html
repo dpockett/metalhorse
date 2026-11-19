@@ -110,6 +110,7 @@ function load(first){const u=$("#upd");if(u)u.textContent="Оновлюю…";
     if(fresh.length){document.title="("+fresh.length+") Нові замовлення";try{new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=").play()}catch(e){}}
   }).catch(()=>{const u2=$("#upd");if(u2)u2.textContent="Немає зв'язку, спробую ще раз";else login("Немає зв'язку з сервером")})}
 addEventListener("focus",()=>{document.title="Замовлення — Metal Horse"});
+const _sh=shell;shell=function(){_sh();const s=document.querySelector(".bar .sp");if(s)s.insertAdjacentHTML("afterend",'<a class="btn gh" href="https://analytics.google.com/analytics/web/" target="_blank" rel="noopener" style="text-decoration:none">Статистика</a><a class="btn gh" href="https://clarity.microsoft.com/projects/view/zgaysb09x4/dashboard" target="_blank" rel="noopener" style="text-decoration:none">Теплова карта</a>')};
 KEY?load():login();
 </script>
 </body>
