@@ -26,6 +26,7 @@ jobs:
           cp ../orders.js ../robots.txt ../sitemap.xml .
           cp ../admin/index.html admin/index.html
           cp ../404.html . && mkdir -p kontaktna-informatsiya && cp ../kontaktna-informatsiya/index.html kontaktna-informatsiya/
+          cp ../analytics.js .
           echo metalhorse.com.ua > CNAME
           touch .nojekyll
           ls -la
