@@ -48,7 +48,7 @@ try:
 except Exception as e:
     print('favicon skipped',e);icon=''
 
-s=s.replace('</head>',icon+open('../head.html',encoding='utf-8').read()+'<link rel="stylesheet" href="/style-extra.css?v=1">\n</head>',1)
+s=s.replace('</head>',icon+open('../head.html',encoding='utf-8').read()+'<link rel="stylesheet" href="/style-extra.css?v=2">\n</head>',1)
 i=s.rfind('</body>')
 s=s[:i]+'<script src="/orders.js?v=2"></script>\n<script src="/analytics.js?v=1"></script>\n'+s[i:]
 open('index.html','w',encoding='utf-8').write(s)
