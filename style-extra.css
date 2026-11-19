@@ -1,0 +1,45 @@
+/* Metal Horse — додаткові фони для каталогу та сторінок авто */
+.view[data-view="katalog"] #models,
+.view[data-view="katalog"] #parts,
+.home-models,.home-cars,
+.cars-page{position:relative;isolation:isolate}
+
+.view[data-view="katalog"] #models::before,
+.view[data-view="katalog"] #parts::before,
+.home-models::before,.home-cars::before,
+.cars-page::before{
+  content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(60% 45% at 88% 4%,rgba(255,106,19,.20),transparent 70%),
+    radial-gradient(45% 40% at 4% 55%,rgba(255,150,70,.10),transparent 70%),
+    radial-gradient(50% 35% at 70% 100%,rgba(255,106,19,.10),transparent 70%),
+    linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px) 0 0/64px 64px,
+    linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px) 0 0/64px 64px,
+    linear-gradient(180deg,#07080a 0%,#0c0e12 45%,#07080a 100%);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 90px,#000 calc(100% - 90px),transparent 100%);
+          mask-image:linear-gradient(180deg,transparent 0,#000 90px,#000 calc(100% - 90px),transparent 100%);
+}
+/* помаранчеві «швидкісні» лінії */
+.view[data-view="katalog"] #parts::after,
+.home-cars::after,
+.cars-page::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    repeating-linear-gradient(-24deg,transparent 0 46px,rgba(255,106,19,.07) 46px 47px,transparent 47px 140px),
+    repeating-linear-gradient(-24deg,transparent 0 90px,rgba(255,255,255,.035) 90px 91px,transparent 91px 230px);
+  -webkit-mask-image:radial-gradient(70% 60% at 85% 20%,#000 0%,transparent 75%);
+          mask-image:radial-gradient(70% 60% at 85% 20%,#000 0%,transparent 75%);
+  animation:mhDrift 18s linear infinite;
+}
+.view[data-view="katalog"] #models::after,.home-models::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:repeating-linear-gradient(-24deg,transparent 0 60px,rgba(255,106,19,.06) 60px 61px,transparent 61px 170px);
+  -webkit-mask-image:radial-gradient(60% 70% at 10% 40%,#000 0%,transparent 75%);
+          mask-image:radial-gradient(60% 70% at 10% 40%,#000 0%,transparent 75%);
+  animation:mhDrift 22s linear infinite reverse;
+}
+@keyframes mhDrift{from{background-position:0 0,0 0}to{background-position:420px 0,690px 0}}
+@media (prefers-reduced-motion:reduce){
+  .view[data-view="katalog"] #parts::after,.home-cars::after,.cars-page::after,
+  .view[data-view="katalog"] #models::after,.home-models::after{animation:none}
+}
