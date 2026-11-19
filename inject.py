@@ -44,6 +44,11 @@ try:
     inner=inner[inner.index('>')+1:-6]
     fav='<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="110 10 990 1190">'+inner+'<use href="#mh-emblem" xlink:href="#mh-emblem" x="110" y="10" width="990" height="1190"/></svg>'
     open('favicon.svg','w',encoding='utf-8').write(fav)
+    og=('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630">'
+        '<defs><radialGradient id="ogG" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#ff6a13" stop-opacity=".35"/><stop offset=".55" stop-color="#ff6a13" stop-opacity=".06"/><stop offset="1" stop-color="#ff6a13" stop-opacity="0"/></radialGradient></defs>'
+        '<rect width="1200" height="630" fill="#060709"/><rect width="1200" height="630" fill="url(#ogG)"/>'
+        +inner+'<use href="#mh-emblem" xlink:href="#mh-emblem" x="364" y="25" width="472" height="580"/></svg>')
+    open('og.svg','w',encoding='utf-8').write(og)
     icon='<link rel="icon" type="image/svg+xml" href="/favicon.svg">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
 except Exception as e:
     print('favicon skipped',e);icon=''
