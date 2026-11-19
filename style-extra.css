@@ -1,12 +1,10 @@
 /* Metal Horse — додаткові фони для каталогу та сторінок авто */
-.view[data-view="katalog"] #models,
 .view[data-view="katalog"] #parts,
-.home-models,.home-cars,
+.home-cars,
 .cars-page{position:relative;isolation:isolate}
 
-.view[data-view="katalog"] #models::before,
 .view[data-view="katalog"] #parts::before,
-.home-models::before,.home-cars::before,
+.home-cars::before,
 .cars-page::before{
   content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
   background:
@@ -31,15 +29,9 @@
           mask-image:radial-gradient(70% 60% at 85% 20%,#000 0%,transparent 75%);
   animation:mhDrift 18s linear infinite;
 }
-.view[data-view="katalog"] #models::after,.home-models::after{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:repeating-linear-gradient(-24deg,transparent 0 60px,rgba(255,106,19,.06) 60px 61px,transparent 61px 170px);
-  -webkit-mask-image:radial-gradient(60% 70% at 10% 40%,#000 0%,transparent 75%);
-          mask-image:radial-gradient(60% 70% at 10% 40%,#000 0%,transparent 75%);
-  animation:mhDrift 22s linear infinite reverse;
-}
 @keyframes mhDrift{from{background-position:0 0,0 0}to{background-position:420px 0,690px 0}}
 @media (prefers-reduced-motion:reduce){
-  .view[data-view="katalog"] #parts::after,.home-cars::after,.cars-page::after,
-  .view[data-view="katalog"] #models::after,.home-models::after{animation:none}
+  .view[data-view="katalog"] #parts::after,.home-cars::after,.cars-page::after{animation:none}
 }
+/* список моделей — суцільний темний фон, щоб текст добре читався */
+.view[data-view="katalog"] #models,.home-models{background:#060709}
