@@ -29,6 +29,7 @@ jobs:
           curl -fsSL -o /tmp/live.js https://metalhorse.com.ua/catalog.js && curl -fsSL -o /tmp/live.json https://metalhorse.com.ua/catalog.json && cp /tmp/live.js catalog.js && cp /tmp/live.json catalog.json || true
           if [ -n "$DNTRADE_TOKEN" ]; then (mkdir -p /tmp/cat && node ../sync-dntrade.mjs /tmp/cat/catalog.json && node -e "if(require('/tmp/cat/catalog.json').total<100)process.exit(1)" && cp /tmp/cat/catalog.json /tmp/cat/catalog.js .) || echo "DNTrade sync failed - keeping previous catalog"; fi
           python3 ../inject.py
+          cp ../nav.js .
           cp ../orders.js ../robots.txt ../sitemap.xml .
           cp ../admin/index.html admin/index.html
           cp ../404.html . && mkdir -p kontaktna-informatsiya && cp ../kontaktna-informatsiya/index.html kontaktna-informatsiya/
