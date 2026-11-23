@@ -1,0 +1,16 @@
+name: dntrade-info
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: channels and statuses
+        env:
+          K: ${{ secrets.DNTRADE_TOKEN }}
+        run: |
+          echo "== channels"; curl -s -H "ApiKey: $K" https://api.dntrade.com.ua/orders/channellist; echo
+          echo "== statuses"; curl -s -H "ApiKey: $K" https://api.dntrade.com.ua/orders/statuslist; echo
+          echo "== last orders"; curl -s -X POST -H "ApiKey: $K" -H "Content-Type: application/json" -d '{}' "https://api.dntrade.com.ua/orders/list?limit=3" | head -c 3000; echo
