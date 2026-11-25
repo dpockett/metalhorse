@@ -60,5 +60,7 @@ i=s.rfind('</body>')
 s=s[:i]+'<script src="/nav.js?v=1"></script>\n'+s[i:]
 i=s.rfind('</body>')
 s=s[:i]+'<script src="/terms.js?v=1"></script>\n'+s[i:]
+i=s.rfind('</body>')
+s=s[:i]+'<script src="/link.js?v=1"></script>\n'+s[i:]
 open('index.html','w',encoding='utf-8').write(s)
 print('ok', len(s))
