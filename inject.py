@@ -3,6 +3,15 @@ s=open('index.html',encoding='utf-8').read()
 s='\n'.join(l for l in s.split('\n') if 'netlify' not in l.lower())
 s=re.sub(r'<title>.*?</title>','<title>Metal Horse — авто з США, запчастини | Рівне</title>',s,count=1,flags=re.S)
 
+# --- швидкість: прибираємо застарілий вбудований знімок каталогу (2 МБ) і даємо браузеру кешувати каталог до наступного оновлення ---
+import time
+a=s.find('<script>/* вбудований каталог DNTrade (знімок) */')
+if a>=0:
+    b=s.index('</script>',a)+9
+    if s[b:b+1]=='\n':b+=1
+    s=s[:a]+s[b:]
+s=s.replace('+"?v="+Date.now()','+"?v='+time.strftime('%Y%m%d%H%M')+'"')
+
 # --- авто: список з cars.js ---
 def _end(s,i):
     j=s.index('[',i);d=0;q=None;k=j
@@ -53,7 +62,7 @@ try:
 except Exception as e:
     print('favicon skipped',e);icon=''
 
-s=s.replace('</head>',icon+open('../head.html',encoding='utf-8').read()+'<link rel="stylesheet" href="/style-extra.css?v=2">\n</head>',1)
+s=s.replace('</head>',icon+open('../head.html',encoding='utf-8').read()+'<link rel="stylesheet" href="/style-extra.css?v=3">\n</head>',1)
 i=s.rfind('</body>')
 s=s[:i]+'<script src="/orders.js?v=2"></script>\n<script src="/analytics.js?v=1"></script>\n'+s[i:]
 i=s.rfind('</body>')
@@ -61,6 +70,6 @@ s=s[:i]+'<script src="/nav.js?v=1"></script>\n'+s[i:]
 i=s.rfind('</body>')
 s=s[:i]+'<script src="/terms.js?v=1"></script>\n'+s[i:]
 i=s.rfind('</body>')
-s=s[:i]+'<script src="/link.js?v=1"></script>\n'+s[i:]
+s=s[:i]+'<script src="/link.js?v=2"></script>\n'+s[i:]
 open('index.html','w',encoding='utf-8').write(s)
 print('ok', len(s))
