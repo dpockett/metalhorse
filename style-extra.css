@@ -35,3 +35,26 @@
 }
 /* список моделей — суцільний темний фон, щоб текст добре читався */
 .view[data-view="katalog"] #models,.home-models{background:#060709}
+
+/* Metal Horse — швидкодія */
+/* фонові лінії більше не анімуються (анімація перемальовувала весь каталог щокадру) */
+.view[data-view="katalog"] #parts::after,.home-cars::after,.cars-page::after{animation:none!important}
+/* картки поза екраном браузер не малює, поки до них не догорнули */
+.parts>.part{content-visibility:auto;contain-intrinsic-size:auto 420px}
+/* телефони: розмиття під напівпрозорими плашками — найважча операція, замінюємо щільним фоном */
+@media (max-width:980px),(pointer:coarse){
+  *,*::before,*::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  header.top.scrolled .wrap{background:rgba(12,14,18,.97)!important}
+  .chip-f{background:rgba(16,18,22,.94)!important}
+  .ph-n,.mh-sh,.cv-n,.cv-zoom{background-color:rgba(6,7,9,.86)!important}
+  .mnav{background:rgba(14,16,20,.97)!important}
+  .search{background:rgba(14,16,20,.96)!important}
+  .co-top,.cv-top{background:rgba(6,7,9,.97)!important}
+  .rib figcaption,.aph figcaption{background:rgba(7,8,10,.9)!important}
+  .cart-bg{background:rgba(0,0,0,.72)!important}
+  .halo{filter:blur(24px)}
+}
+/* емблема на головній: тінь малюється один раз, а не на кожному кадрі прокрутки */
+.emblem,.emblem .mh{will-change:transform}
+/* іскри на головній — тільки на комп'ютері (на телефоні економимо батарею і плавність) */
+@media (pointer:coarse){#sparks{display:none}}
